@@ -1,0 +1,58 @@
+body {
+  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  background-color: #E9E9E9;
+}
+
+#pageTitle {
+  color: #575757;
+  letter-spacing: .25em;
+}
+
+#barcodeForm {
+  margin-top: 60%;
+  border: 2px solid #8E8E8E;
+  padding: 10%;
+  border-radius: 5px;
+}
+
+#barcodeInput {
+  background-color: #DADADA;
+}
+
+#submitButton {
+  color: #0CC5E3;
+  font-weight: bold;
+  background-color: #f7f7f7;
+}
+
+#itemTable {
+  margin-top: 60%;
+  background-color: #DADADA;
+}
+
+#glutenStatusText {
+  color: #0CC5E3;
+  font-weight: bold;
+}
+
+#glutenStatusMessage {
+  font-weight: bold;
+}
+
+#productSection {
+  margin-top: 60%;
+}
+
+#productTitle {
+  color: #575757;
+}
+
+#productInput {
+  background-color: #DADADA;
+}
+
+#addButton {
+  color: #A17CFF;
+  font-weight: bold;
+  background-color: #f7f7f7;
+}

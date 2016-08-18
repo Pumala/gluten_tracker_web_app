@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Gluten Tracker</title>
+  <!-- CSS files -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+</head>
+<body ng-app="my-app" >
+  <div class="container" ng-controller="MainController">
+    <h1 class="text-center" id="pageTitle">Gluten Tracker</h1>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 text-center">
+        <div>
+          <form class="form-inline" ng-submit="getInfo(barcode)" id="barcodeForm">
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="barcode" maxlength="12" placeholder="Enter 12-digit Barcode" id="barcodeInput">
+            </div>
+            <button class="btn" type="submit" id="submitButton">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <table class="table" id="itemTable">
+          <tr>
+            <th>
+              Brand
+            </th>
+            <th>
+              Item
+            </th>
+            <th id="glutenStatusText">
+              Gluten Status
+            </th>
+            <th>
+              Gluten Ingredient
+            </th>
+            <th>
+              Potential Problem Ingredient
+            </th>
+          </tr>
+          <tr>
+            <td>
+              {{brand_name}}
+            </td>
+            <td>
+              {{item_name}}
+            </td>
+            <td id="glutenStatusMessage">
+              {{message}}
+            </td>
+            <td ng-repeat="ingredient in glutenIngredients">
+              {{ingredient}}
+            </td>
+            <td ng-repeat="mIngredient in problemIngredients">
+              {{mIngredient}}
+            </td>
+          </tr>
+        </table>
+        <div>
+          <button class="btn" ng-click="scrollBarcode()" type="button" name="button">Enter another Barcode</button>
+          <button ng-click="scrollProducts()" class="btn" type="button" name="button">See Common Products to check</button>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+  <div class="container" ng-controller="ProductsCtrl">
+    <div class="row"  id="productSection">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div>
+          <h3 id="productTitle">Common Products to Check</h3>
+          <div>
+            <form ng-submit="addProduct(product)" class="form-inline">
+              <div class="form-group">
+                <input type="text" class="form-control" ng-model="product" placeholder="Enter Product to Add" id="productInput">
+              </div>
+              <button class="btn" type="submit" id="addButton">
+                Add
+              </button>
+            </form>
+          </div>
+        </div>
+        <table class="table table-striped">
+          <tr ng-repeat="product in products">
+            <td>
+              {{product.name}}
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+
+  <!-- Script files -->
+  <script src="js/angular.js"></script>
+  <script src="js/client.js"></script>
+</body>
+</html>
