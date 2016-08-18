@@ -30,48 +30,28 @@ app.controller('MainController', function($scope, $http, $location, $anchorScrol
               problemIngredients.push(results[i].ingredient);
               $scope.problemIngredients = problemIngredients;
               console.log(problemIngredients);
-              // $scope.ingredient = results[i].ingredient;
-              // console.log("item could contain gluten");
             } else if(results[i].contain_gluten === "g") {
               $scope.message = "OH NO... CONTAINS GLUTEN!! Sorry but it needs to go back on the shelf!";
               glutenIngredients.push(results[i].ingredient);
               $scope.glutenIngredients = glutenIngredients;
               console.log(problemIngredients);
               break;
-              // $scope.ingredient = results[i].ingredient;
-              // console.log("item contains gluten");
             }
-            // if(results[i].contain_gluten === "g") {
-            //   $scope.message = "OH NO... CONTAINS GLUTEN!! Sorry but it needs to go back on the shelf!";
-            //   problemIngredients.push(results[i].ingredient);
-            //   $scope.problemIngredients = problemIngredients;
-            //   console.log(problemIngredients);
-            //   // $scope.ingredient = results[i].ingredient;
-            //   break;
-            //   // console.log("item contains gluten");
-            // } else if (results[i].contain_gluten === "m") {
-            //   $scope.message = "MIGHT Contain Gluten, Please check the manufacturer website!";
-            //   problemIngredients.push(results[i].ingredient);
-            //   $scope.problemIngredients = problemIngredients;
-            //   console.log(problemIngredients);
-            //   // $scope.ingredient = results[i].ingredient;
-            //   // console.log("item could contain gluten");
-            // }
           }
         });
       }
     });
-    $location.hash('itemTable');
+    $location.hash('middleAnchor');
     $anchorScroll();
   };
 
       $scope.scrollBarcode = function() {
-        $location.hash('pageTitle');
+        $location.hash('topAnchor');
         $anchorScroll();
       };
 
       $scope.scrollProducts = function() {
-        $location.hash('productTitle');
+        $location.hash('bottomAnchor');
         $anchorScroll();
       };
 
@@ -95,6 +75,11 @@ app.controller('ProductsCtrl', function($scope, $http, $location, $anchorScroll)
       .then(function(data) {
         refreshList();
       });
+    };
+
+    $scope.scrollBarcode = function() {
+      $location.hash('topAnchor');
+      $anchorScroll();
     };
 
     refreshList();
