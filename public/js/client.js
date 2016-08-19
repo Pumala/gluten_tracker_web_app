@@ -12,7 +12,7 @@ app.controller('MainController', function($scope, $http, $location, $anchorScrol
       $scope.brand_name = data.data.brand_name;
       console.log('brand name:', data.data.brand_name);
       if (data.data.nf_ingredient_statement === null || data.data.nf_ingredient_statement === undefined) {
-        $scope.message = "Ut oh! Looks like we can't find the ingredients... please check the manufacturer website";
+        $scope.message = "Ut oh! Looks like we can't find the ingredients... please check the manufacturer's website";
       } else {
         return $http.post("http://localhost:8000/checkingredients", ingredientArry(data.data.nf_ingredient_statement)).then(function(data){
           console.log(data);
@@ -26,7 +26,7 @@ app.controller('MainController', function($scope, $http, $location, $anchorScrol
           }
           for (var i = 0; i < results.length; i++) {
             if (results[i].contain_gluten === "m") {
-              $scope.message = "MIGHT Contain Gluten, Please check the manufacturer website!";
+              $scope.message = "MIGHT Contain Gluten, Please check the manufacturer's website!";
               problemIngredients.push(results[i].ingredient);
               $scope.problemIngredients = problemIngredients;
               console.log(problemIngredients);
