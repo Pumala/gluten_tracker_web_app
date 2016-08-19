@@ -4,13 +4,25 @@ var pgp = require('pg-promise')();
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var apiRequest = require('cached-request')(require('request'));
+require('dotenv').config();
 apiRequest.setCacheDirectory('request-cache');
+
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-var db = pgp("postgres://localhost:5432/ingredients_db");
+var cn = {
+  host: process.env.DB_HOST,
+  port: 5432,
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  ssl: true
+};
+
+var db = pgp(cn);
+
 
 app.post('/checkingredients', function(request, response) {
   var data = request.body;
