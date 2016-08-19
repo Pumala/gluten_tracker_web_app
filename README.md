@@ -12,17 +12,16 @@ Need to avoid gluten? This app allows you to enter a barcode and have a response
 * Node.js
 
 ##Screen Shots
-![Barcode](screenShots/barcode.png "Barcode")
 
 ####Barcode
-
-![Item Info](screenShots/itemInfo.png "Item Info")
+![Barcode](screenshots/barcode.png "Barcode")
 
 ####Item Info
-
-![Products](screenShots/products.png "Products")
+![Item Info](screenshots/itemInfo.png "Item Info")
 
 ####Products
+![Products](screenshots/products.png "Products")
+
 
 ###Things to Add
 * login feature with ability to choose allergy needs
