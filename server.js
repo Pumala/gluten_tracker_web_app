@@ -12,6 +12,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+var port = process.env.PORT || 8000;
+
 var cn = {
   host: process.env.DB_HOST,
   port: 5432,
@@ -68,6 +70,6 @@ app.post('/addProduct', function(request, response) {
     });
 });
 
-app.listen(8000, function(){
+app.listen(port, function(){
   console.log("Listening on port 8000");
 });

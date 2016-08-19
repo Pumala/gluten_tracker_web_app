@@ -4,7 +4,7 @@ app.controller('MainController', function($scope, $http, $location, $anchorScrol
   // barcode = $scope.barcode;
   $scope.getInfo = function(barcode) {
     $scope.problemIngredients = "";
-    $http({url:"http://localhost:8000/checkbarcode/" + barcode}).then(function(data) {
+    $http({url:"https://kendrick-glutentracker-webapp.herokuapp.com/checkbarcode/" + barcode}).then(function(data) {
       console.log("data", data);
       console.log("ingredients", data.data.nf_ingredient_statement);
       $scope.item_name = data.data.item_name;
@@ -14,7 +14,7 @@ app.controller('MainController', function($scope, $http, $location, $anchorScrol
       if (data.data.nf_ingredient_statement === null || data.data.nf_ingredient_statement === undefined) {
         $scope.message = "Ut oh! Looks like we can't find the ingredients... please check the manufacturer's website";
       } else {
-        return $http.post("http://localhost:8000/checkingredients", ingredientArry(data.data.nf_ingredient_statement)).then(function(data){
+        return $http.post("https://kendrick-glutentracker-webapp.herokuapp.com/checkingredients", ingredientArry(data.data.nf_ingredient_statement)).then(function(data){
           console.log(data);
           //gives an array of objects
           var results = data.data;
@@ -60,7 +60,7 @@ app.controller('MainController', function($scope, $http, $location, $anchorScrol
 app.controller('ProductsCtrl', function($scope, $http, $location, $anchorScroll) {
   function refreshList() {
   //get list of products from db
-    $http({url:"http://localhost:8000/products/"})
+    $http({url:"https://kendrick-glutentracker-webapp.herokuapp.com/products/"})
     .then(function(data){
       console.log(data);
       //tie products to the scope
@@ -71,7 +71,7 @@ app.controller('ProductsCtrl', function($scope, $http, $location, $anchorScroll)
 
     $scope.addProduct = function(product) {
       $scope.product = "";
-      $http.post("http://localhost:8000/addProduct", {"product": product})
+      $http.post("https://kendrick-glutentracker-webapp.herokuapp.com/addProduct", {"product": product})
       .then(function(data) {
         refreshList();
       });
